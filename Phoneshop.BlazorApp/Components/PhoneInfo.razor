@@ -1,0 +1,17 @@
+﻿@using Phoneshop.BlazorApp.Data
+
+<div class="themed-container d-flex position-relative">
+    <img class="flex-shrink-0 mr-3 rounded" src="@Phone.Image" />
+     
+    <Div>
+        <Heading Class="mt-0" TextWeight="TextWeight.Bold">@Phone.Name - @Phone.Brand</Heading>
+        <Paragraph TextWeight="TextWeight.Light">@Phone.Description</Paragraph>
+        <Paragraph Class="position-absolute bottom-0" Italic>€@Phone.Price - @Phone.Stock left in stock!</Paragraph>
+        <Button Class="position-absolute bottom-10 end-10" Color="Color.Primary">Show more</Button>
+    </Div>
+</div>
+
+@code {
+    [Parameter]
+    public Phone Phone { get; set; }
+}

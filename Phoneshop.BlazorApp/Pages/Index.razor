@@ -1,0 +1,19 @@
+﻿@page "/"
+@using Phoneshop.BlazorApp.Data
+
+@foreach(var phone in _phones)
+{
+    <PhoneInfo Phone="phone"></PhoneInfo>
+}
+
+@code {
+    private IEnumerable<Phone> _phones = Enumerable.Repeat(new Phone { Brand = "{Brand}", Name = "{Type}", Description = "{Description}" }, 5);
+    //new List<Phone>
+    //{
+        //new Phone { Brand = "A group of 33 year olds", Name = "Amogus", Description = "haha sus, he vented! 'Mass murder in spaceship is fun!'" },
+        //new Phone { Brand = "A group of 12 year olds", Name = "Roblox", Description = "Real men play 'Welcome to Bloxburg' and 'Adopt Me!'" },
+        //new Phone { Brand = "Notch", Name = "Minecraft", Description = "Notch approved" },
+        //new Phone { Brand = "Some german guy that got rejected at art school", Name = "Meinkraft 2", Description = "Stalin approved" },
+        //new Phone { Brand = "Sweden", Name = "FjortNut", Description = "Sweden's answer to combat Minecraft" },
+    //};
+}

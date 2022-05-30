@@ -1,5 +1,4 @@
 using Blazorise;
-using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -8,10 +7,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Phoneshop.Domain.Abstractions;
+using Phoneshop.Infrastructure.Extensions;
+using Phoneshop.BlazorApp.Implementations;
+using Blazorise.Bootstrap;
+using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Phoneshop.BlazorApp
 {
@@ -30,14 +31,24 @@ namespace Phoneshop.BlazorApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddHttpContextAccessor();
 
             services.AddBlazorise(options =>
             {
                 options.ChangeTextOnKeyPress = true;
             });
 
-            services.AddBootstrap5Providers();
+            services.AddBootstrapProviders();
             services.AddFontAwesomeIcons();
+
+            string baseUrl = Configuration.GetValue<string>("ApiBaseUri") ?? "https://localhost:44361/api/";
+            services.AddHttpClient(Options.DefaultName, client =>
+            {
+                client.BaseAddress = new Uri(baseUrl);
+            });
+            services.AddScoped<IHttpSession, BlazorHttpSession>();
+
+            services.AddPhoneshopBlazorInfrastructure(baseUrl);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +65,7 @@ namespace Phoneshop.BlazorApp
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

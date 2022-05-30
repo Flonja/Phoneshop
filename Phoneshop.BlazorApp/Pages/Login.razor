@@ -1,0 +1,41 @@
+﻿@page "/login"
+@inject IHttpSession _session
+@inject NavigationManager _manager
+@using System.ComponentModel.DataAnnotations
+
+<Heading Size="HeadingSize.Is3">Login</Heading>
+<Validations @ref="validations" Model="@form" Mode="ValidationMode.Auto">
+    <Validation>
+        <Field>
+            <TextEdit Placeholder="Enter your email" @bind-Text="@form.Email">
+                <Feedback>
+                    <ValidationError />
+                </Feedback>
+            </TextEdit>
+        </Field>
+    </Validation>
+    <Validation>
+        <Field>
+            <TextEdit Role="TextRole.Password" Placeholder="Enter your password" @bind-Text="@form.Password">
+                <Feedback>
+                    <ValidationError />
+                </Feedback>
+            </TextEdit>
+        </Field>
+    </Validation>
+    <Button Color="Color.Primary" Clicked="@Submit">Login</Button>
+</Validations>
+
+@code {
+    private Validations validations;
+    private LoginInputModel form = new LoginInputModel();
+
+    private async Task Submit()
+    {
+        if (await validations.ValidateAll())
+        {
+            await _session.Login(form);
+            _manager.NavigateTo("/");
+        }
+    }
+}

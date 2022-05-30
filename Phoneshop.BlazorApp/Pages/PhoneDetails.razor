@@ -1,0 +1,45 @@
+﻿@page "/details/{Id:int}"
+@inject IRepository<Phone> _repository
+@inject IHttpSession _session
+
+@if(Phone != null)
+{
+    <div class="phone-container d-flex position-relative">
+        <img class="flex-shrink-0 mr-3 rounded" src="@Phone.Image" />
+     
+        <Div>
+            <Heading Class="mt-0" TextWeight="TextWeight.Bold">@Phone.Brand.Name - @Phone.Name</Heading>
+            <Paragraph Italic>€@Phone.Price - @Phone.GetStockInfo()</Paragraph>
+            <Button Class="position-absolute top-0 end-10" Color="Color.Primary" Type="ButtonType.Link" To="/">Back</Button>
+        </Div>
+    </div>
+    <Paragraph TextWeight="TextWeight.Light">@Phone.Description</Paragraph>
+    <Button Class="position-absolute bottom-10 end-10" Color="Color.Primary" Type="ButtonType.Link" Clicked="async () => await Delete()">Delete</Button>
+
+    <SnackbarStack @ref="snackbarStack" Location="SnackbarStackLocation.Center" DefaultInterval="2000" />
+}
+else
+{
+    <Heading>Unable to load phone with id: @Id</Heading>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public Phone Phone { get; set; }
+
+    private SnackbarStack snackbarStack;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Phone = await _repository.Get(phone => phone.Id == Id);
+    }
+
+    private async Task Delete()
+    {
+        if(!await _repository.Remove(phone => phone.Id == Id))
+        {
+            await snackbarStack.PushAsync("Not authorized to remove this phone.", SnackbarColor.Danger);
+        }
+    }
+}

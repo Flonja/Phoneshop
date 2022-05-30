@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoneshop.BlazorApp", "Phoneshop.BlazorApp\Phoneshop.BlazorApp.csproj", "{87B1F9E5-0C8F-4ADA-AE9B-21CB48F72665}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoneshop.Api", "Phoneshop.Api\Phoneshop.Api.csproj", "{CFE37FC0-ABFD-4B0D-B512-3AB4CC6F622E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoneshop.Infrastructure", "Phoneshop.Infrastructure\Phoneshop.Infrastructure.csproj", "{FB6AF855-B9E2-465E-84ED-AAE1A954448F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoneshop.Domain", "Phoneshop.Domain\Phoneshop.Domain.csproj", "{944DED92-45D9-492D-A134-4D6A16D44E5E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{10DCDF51-9B0C-4A40-9D8D-DF2DEF8E3934}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{87B1F9E5-0C8F-4ADA-AE9B-21CB48F72665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87B1F9E5-0C8F-4ADA-AE9B-21CB48F72665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87B1F9E5-0C8F-4ADA-AE9B-21CB48F72665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE37FC0-ABFD-4B0D-B512-3AB4CC6F622E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE37FC0-ABFD-4B0D-B512-3AB4CC6F622E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE37FC0-ABFD-4B0D-B512-3AB4CC6F622E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE37FC0-ABFD-4B0D-B512-3AB4CC6F622E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6AF855-B9E2-465E-84ED-AAE1A954448F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6AF855-B9E2-465E-84ED-AAE1A954448F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6AF855-B9E2-465E-84ED-AAE1A954448F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6AF855-B9E2-465E-84ED-AAE1A954448F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{944DED92-45D9-492D-A134-4D6A16D44E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{944DED92-45D9-492D-A134-4D6A16D44E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{944DED92-45D9-492D-A134-4D6A16D44E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{944DED92-45D9-492D-A134-4D6A16D44E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10DCDF51-9B0C-4A40-9D8D-DF2DEF8E3934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10DCDF51-9B0C-4A40-9D8D-DF2DEF8E3934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10DCDF51-9B0C-4A40-9D8D-DF2DEF8E3934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10DCDF51-9B0C-4A40-9D8D-DF2DEF8E3934}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

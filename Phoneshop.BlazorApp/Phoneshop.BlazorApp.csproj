@@ -2,11 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>00929c02-1838-4fba-8676-9b386a6a1743</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blazorise.Bootstrap5" Version="0.9.5.7" />
+    <PackageReference Include="Blazorise.Bootstrap" Version="0.9.5.7" />
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="0.9.5.7" />
+    <PackageReference Include="Blazorise.Snackbar" Version="0.9.5.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+    <PackageReference Include="PhoneshopNuget.Repository" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Phoneshop.Domain\Phoneshop.Domain.csproj" />
+    <ProjectReference Include="..\Phoneshop.Infrastructure\Phoneshop.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

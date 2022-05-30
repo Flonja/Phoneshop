@@ -1,11 +1,20 @@
 ﻿@page "/"
-@using Phoneshop.BlazorApp.Data
+@inject IHttpSession _session
+@inject IRepository<Phone> _repository
 
-@foreach(var phone in _phones)
+@foreach(var phone in Phones)
 {
     <PhoneInfo Phone="phone"></PhoneInfo>
 }
 
 @code {
-    private IEnumerable<Phone> _phones = Enumerable.Repeat(new Phone { Brand = "{Brand}", Name = "{Type}", Description = "{Description}" }, 5);
+    public IEnumerable<Phone> Phones { get; set; } = new List<Phone>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            Phones = await _repository.GetAll();
+        }
+    }
 }

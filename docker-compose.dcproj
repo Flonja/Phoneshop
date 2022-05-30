@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.1</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <ProjectGuid>10dcdf51-9b0c-4a40-9d8d-df2def8e3934</ProjectGuid>
+    <DockerLaunchAction>None</DockerLaunchAction>
+    <DockerServiceUrl>http://localhost:80/api/swagger</DockerServiceUrl>
+    <DockerServiceName>nginx</DockerServiceName>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include=".env" />
+    <None Include="docker-compose.yml" />
+    <None Include=".dockerignore" />
+    <None Include="Phoneshop.Nginx\Dockerfile" />
+    <None Include="Phoneshop.Nginx\nginx.conf" />
+  </ItemGroup>
+</Project>

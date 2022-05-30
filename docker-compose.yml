@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  nginx:
+    image: ${DOCKER_REGISTRY-}phoneshopnginx
+    ports:
+      - 80:80
+    depends_on:
+      - phoneshopapi
+      - phoneshopblazor
+    build:
+      context: .
+      dockerfile: Phoneshop.Nginx/Dockerfile
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: ${DB_PASSWORD}
+
+  phoneshopapi:
+    image: ${DOCKER_REGISTRY-}phoneshopapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_CONNECTION_STRING: ${DB_CONNECTIONSTRING}
+    depends_on:
+      - mssql
+    build:
+      context: .
+      dockerfile: Phoneshop.Api/Dockerfile
+  phoneshopblazor:
+    image: ${DOCKER_REGISTRY-}phoneshopblazor
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    ports:
+      - 81:80
+    depends_on:
+      - phoneshopapi
+    build:
+      context: .
+      dockerfile: Phoneshop.BlazorApp/Dockerfile

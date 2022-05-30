@@ -9,7 +9,6 @@
     <DockerServiceName>nginx</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".env" />
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
     <None Include="Phoneshop.Nginx\Dockerfile" />
